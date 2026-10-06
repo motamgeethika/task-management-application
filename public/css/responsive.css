@@ -1,0 +1,106 @@
+/* ========================================================
+   RESPONSIVE DESIGN SYSTEM
+   ======================================================== */
+
+@media (max-width: 1200px) {
+  .kanban-board {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .analytics-grid-two {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.75rem 1rem;
+    flex-wrap: wrap;
+  }
+
+  .main-content {
+    padding: 1rem 1rem 2rem 1rem;
+  }
+
+  .view-switcher {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  .view-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .control-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .search-box {
+    max-width: 100%;
+    min-width: 100%;
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+
+  .select-filter {
+    flex: 1;
+  }
+
+  /* Kanban mobile horizontal scroll with snap */
+  .kanban-board {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .kanban-column {
+    flex: 0 0 85vw;
+    scroll-snap-align: center;
+    max-height: calc(100vh - 240px);
+  }
+
+  /* Form modal on mobile */
+  .modal-card {
+    max-height: 94vh;
+    border-radius: var(--radius-lg);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tasks-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .user-name-label {
+    display: none;
+  }
+
+  .brand-badge {
+    display: none;
+  }
+}

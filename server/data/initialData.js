@@ -1,0 +1,227 @@
+const PASSWORD_HASH = '$2b$10$mWLEGtrnGTVw2s4RRKF2Eec.JhQxijy9uyZCw8n7pD7kREzn7k5x.'; // 'password123'
+
+const initialUsers = [
+  {
+    id: 'usr-1',
+    name: 'Alex Rivera',
+    email: 'alex@taskmaster.io',
+    password: PASSWORD_HASH,
+    role: 'Product Lead',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+    createdAt: new Date('2026-01-10').toISOString()
+  },
+  {
+    id: 'usr-2',
+    name: 'Sarah Chen',
+    email: 'sarah@taskmaster.io',
+    password: PASSWORD_HASH,
+    role: 'Senior Engineer',
+    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80',
+    createdAt: new Date('2026-01-12').toISOString()
+  },
+  {
+    id: 'usr-3',
+    name: 'Marcus Vance',
+    email: 'marcus@taskmaster.io',
+    password: PASSWORD_HASH,
+    role: 'DevOps Architect',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+    createdAt: new Date('2026-01-15').toISOString()
+  },
+  {
+    id: 'usr-4',
+    name: 'Elena Rostova',
+    email: 'elena@taskmaster.io',
+    password: PASSWORD_HASH,
+    role: 'UI/UX Specialist',
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80',
+    createdAt: new Date('2026-01-18').toISOString()
+  }
+];
+
+const initialTasks = [
+  {
+    id: 'task-101',
+    title: 'Architect Real-time WebSocket Gateway',
+    description: 'Implement resilient bi-directional socket protocol for sub-10ms broadcast events and presence tracking across team tabs.',
+    status: 'in_progress',
+    priority: 'urgent',
+    category: 'Development',
+    assigneeId: 'usr-2',
+    createdBy: 'usr-1',
+    dueDate: '2026-10-14',
+    estimatedHours: 12,
+    tags: ['WebSockets', 'Backend', 'Performance'],
+    subtasks: [
+      { id: 'sub-1', title: 'Setup ws server integration with Express', completed: true },
+      { id: 'sub-2', title: 'Broadcast task mutation channels', completed: true },
+      { id: 'sub-3', title: 'Heartbeat ping-pong & auto-reconnect client', completed: false },
+      { id: 'sub-4', title: 'Presence online indicator badge', completed: false }
+    ],
+    createdAt: new Date('2026-10-01T09:00:00Z').toISOString(),
+    updatedAt: new Date('2026-10-05T14:30:00Z').toISOString()
+  },
+  {
+    id: 'task-102',
+    title: 'Design Dark Mode Glassmorphic Design System',
+    description: 'Craft cohesive color palette tokens, backdrop blur filters, glowing accents, and micro-interaction states for card elevation.',
+    status: 'completed',
+    priority: 'high',
+    category: 'Design',
+    assigneeId: 'usr-4',
+    createdBy: 'usr-1',
+    dueDate: '2026-10-08',
+    estimatedHours: 8,
+    tags: ['UI/UX', 'Figma', 'CSS Tokens'],
+    subtasks: [
+      { id: 'sub-5', title: 'Define HSL color scale and neon highlights', completed: true },
+      { id: 'sub-6', title: 'Produce card hover lift animation specs', completed: true },
+      { id: 'sub-7', title: 'Export responsive typography scales', completed: true }
+    ],
+    createdAt: new Date('2026-09-28T10:00:00Z').toISOString(),
+    updatedAt: new Date('2026-10-04T16:20:00Z').toISOString()
+  },
+  {
+    id: 'task-103',
+    title: 'Setup JWT Auth & Session Invalidation',
+    description: 'Provide secure token issuance, payload encryption, auth middleware guards, and demo user fast switcher.',
+    status: 'review',
+    priority: 'high',
+    category: 'Development',
+    assigneeId: 'usr-2',
+    createdBy: 'usr-2',
+    dueDate: '2026-10-12',
+    estimatedHours: 6,
+    tags: ['Security', 'JWT', 'Auth'],
+    subtasks: [
+      { id: 'sub-8', title: 'Bcrypt password hashing with salt rounds', completed: true },
+      { id: 'sub-9', title: 'Token verification express middleware', completed: true },
+      { id: 'sub-10', title: 'Client token storage & expired redirect flow', completed: true },
+      { id: 'sub-11', title: 'One-click demo credential mock switcher', completed: false }
+    ],
+    createdAt: new Date('2026-10-02T11:15:00Z').toISOString(),
+    updatedAt: new Date('2026-10-06T10:00:00Z').toISOString()
+  },
+  {
+    id: 'task-104',
+    title: 'CI/CD Pipeline & Automated Health Monitoring',
+    description: 'Configure automated test runner, zero-downtime deployment script, and automated error diagnostics.',
+    status: 'todo',
+    priority: 'medium',
+    category: 'DevOps',
+    assigneeId: 'usr-3',
+    createdBy: 'usr-1',
+    dueDate: '2026-10-20',
+    estimatedHours: 10,
+    tags: ['DevOps', 'Docker', 'CI/CD'],
+    subtasks: [
+      { id: 'sub-12', title: 'Write Dockerfile multi-stage build', completed: false },
+      { id: 'sub-13', title: 'Configure lint & test verification workflow', completed: false },
+      { id: 'sub-14', title: 'Set up health check /status endpoint', completed: false }
+    ],
+    createdAt: new Date('2026-10-03T13:45:00Z').toISOString(),
+    updatedAt: new Date('2026-10-03T13:45:00Z').toISOString()
+  },
+  {
+    id: 'task-105',
+    title: 'Interactive Kanban Drag-and-Drop Experience',
+    description: 'Implement drag preview shadows, column drop targets with visual indicators, and optimistic UI transitions on task status updates.',
+    status: 'in_progress',
+    priority: 'urgent',
+    category: 'Design',
+    assigneeId: 'usr-1',
+    createdBy: 'usr-1',
+    dueDate: '2026-10-15',
+    estimatedHours: 7,
+    tags: ['Kanban', 'DragDrop', 'Interactivity'],
+    subtasks: [
+      { id: 'sub-15', title: 'HTML5 drag and drop listeners on cards', completed: true },
+      { id: 'sub-16', title: 'Column drop zone highlight animation', completed: true },
+      { id: 'sub-17', title: 'Mobile fallback quick status shift menu', completed: false },
+      { id: 'sub-18', title: 'Optimistic UI update with server sync', completed: false }
+    ],
+    createdAt: new Date('2026-10-04T08:30:00Z').toISOString(),
+    updatedAt: new Date('2026-10-06T11:45:00Z').toISOString()
+  },
+  {
+    id: 'task-106',
+    title: 'Product Launch Marketing & Feature Announcement',
+    description: 'Prepare interactive release notes, newsletter campaign graphics, and feature teaser demo clips.',
+    status: 'todo',
+    priority: 'low',
+    category: 'Marketing',
+    assigneeId: 'usr-4',
+    createdBy: 'usr-4',
+    dueDate: '2026-10-25',
+    estimatedHours: 5,
+    tags: ['Marketing', 'ProductLaunch', 'Social'],
+    subtasks: [
+      { id: 'sub-19', title: 'Draft changelog documentation', completed: false },
+      { id: 'sub-20', title: 'Produce high-res screenshots and GIFs', completed: false }
+    ],
+    createdAt: new Date('2026-10-05T15:00:00Z').toISOString(),
+    updatedAt: new Date('2026-10-05T15:00:00Z').toISOString()
+  },
+  {
+    id: 'task-107',
+    title: 'Productivity Analytics & Completion Metrics Engine',
+    description: 'Calculate real-time burn-down rates, weekly completion velocity, priority distribution chart data, and overdue warnings.',
+    status: 'review',
+    priority: 'medium',
+    category: 'Development',
+    assigneeId: 'usr-2',
+    createdBy: 'usr-1',
+    dueDate: '2026-10-16',
+    estimatedHours: 9,
+    tags: ['Analytics', 'SVG Charts', 'Metrics'],
+    subtasks: [
+      { id: 'sub-21', title: 'Compute total, pending, completed counts', completed: true },
+      { id: 'sub-22', title: 'Render responsive SVG donut distribution chart', completed: true },
+      { id: 'sub-23', title: 'Velocity progress bars with gradient fills', completed: true }
+    ],
+    createdAt: new Date('2026-10-03T16:00:00Z').toISOString(),
+    updatedAt: new Date('2026-10-06T12:00:00Z').toISOString()
+  }
+];
+
+const initialActivities = [
+  {
+    id: 'act-1',
+    type: 'status_changed',
+    userId: 'usr-2',
+    userName: 'Sarah Chen',
+    userAvatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80',
+    taskId: 'task-103',
+    taskTitle: 'Setup JWT Auth & Session Invalidation',
+    details: 'Moved task to "In Review"',
+    timestamp: new Date('2026-10-06T10:00:00Z').toISOString()
+  },
+  {
+    id: 'act-2',
+    type: 'task_created',
+    userId: 'usr-4',
+    userName: 'Elena Rostova',
+    userAvatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80',
+    taskId: 'task-106',
+    taskTitle: 'Product Launch Marketing & Feature Announcement',
+    details: 'Created new task in "Marketing"',
+    timestamp: new Date('2026-10-05T15:00:00Z').toISOString()
+  },
+  {
+    id: 'act-3',
+    type: 'task_completed',
+    userId: 'usr-4',
+    userName: 'Elena Rostova',
+    userAvatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80',
+    taskId: 'task-102',
+    taskTitle: 'Design Dark Mode Glassmorphic Design System',
+    details: 'Completed all subtasks and marked Done',
+    timestamp: new Date('2026-10-04T16:20:00Z').toISOString()
+  }
+];
+
+module.exports = {
+  initialUsers,
+  initialTasks,
+  initialActivities
+};

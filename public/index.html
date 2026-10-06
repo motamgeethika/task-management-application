@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskMaster Pro - Real-Time Collaborative Task Management</title>
+  <meta name="description" content="Streamline team workflows with TaskMaster Pro: real-time collaborative Kanban boards, live WebSocket updates, task analytics, and JWT authentication.">
+  <meta name="theme-color" content="#0a0e17">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Application Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/kanban.css">
+  <link rel="stylesheet" href="css/list-view.css">
+  <link rel="stylesheet" href="css/analytics.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="app-container" id="appRoot">
+    <!-- Top Navigation Header -->
+    <header id="navbarContainer" role="banner"></header>
+
+    <!-- Main Content Container -->
+    <main class="main-content" id="mainContent" role="main">
+      <!-- Visually Hidden or Accessible Primary Heading -->
+      <header style="margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+        <div>
+          <h1 style="font-size: 1.75rem; font-weight: 800; letter-spacing: -0.03em;">Workspace Board</h1>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem;">
+            Real-time collaboration across design, development, and delivery.
+          </p>
+        </div>
+        <div style="font-size: 0.75rem; color: var(--text-muted); display: flex; gap: 1rem; align-items: center;">
+          <span>Keyboard shortcut: <kbd style="background:var(--bg-tertiary); padding: 0.2rem 0.4rem; border-radius:4px; border:1px solid var(--border-subtle);">N</kbd> new task</span>
+          <span><kbd style="background:var(--bg-tertiary); padding: 0.2rem 0.4rem; border-radius:4px; border:1px solid var(--border-subtle);">/</kbd> search</span>
+        </div>
+      </header>
+
+      <!-- Sub-Header Search & Filters Control Bar -->
+      <div id="controlBarContainer"></div>
+
+      <!-- Active View Host (Kanban / List / Analytics) -->
+      <section id="viewContainer" aria-label="Task Management Views"></section>
+    </main>
+  </div>
+
+  <!-- Client-side JavaScript Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/websocket.js"></script>
+  
+  <!-- UI Components -->
+  <script src="js/components/toast.js"></script>
+  <script src="js/components/authModal.js"></script>
+  <script src="js/components/taskModal.js"></script>
+  <script src="js/components/taskCard.js"></script>
+  <script src="js/components/kanbanBoard.js"></script>
+  <script src="js/components/taskList.js"></script>
+  <script src="js/components/analyticsView.js"></script>
+  <script src="js/components/navbar.js"></script>
+  
+  <!-- Application Bootstrap -->
+  <script src="js/app.js"></script>
+</body>
+</html>
